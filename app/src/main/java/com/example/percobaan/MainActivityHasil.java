@@ -1,12 +1,38 @@
 package com.example.percobaan;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+
 
 public class MainActivityHasil extends AppCompatActivity {
     //Mendeklarasikan Variabel dengan tipe data textview
     TextView txEmail, txPassword;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Method untuk menampilkan menu
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Membuat kondisi jika yang dipilih adalah mnDaftar
+        if (item.getItemId()==R.id.mnDaftar)
+        {
+            //Method untuk memanggil activity "DaftarActivity"
+            Intent i= new Intent(getApplicationContext(),DaftarActivity.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +62,6 @@ public class MainActivityHasil extends AppCompatActivity {
 
         //Menampilkan value dari variabel  pass kedalam txPassword
         txPassword.setText(pass);
+
     }
 }
